@@ -1,10 +1,27 @@
-const Gallery = () => {
-  const crewMates = null;
+import { useState, useEffect } from "react";
 
-  return (<>
-    <h1>Your Crewmates gallery</h1>
-    {crewMates ?  crewMates : <div>You haven't made a crewmate yet!</div>}
-  </>)
-}
+const Gallery = ({ data }) => {
+  const [crewmates, setCrewmates] = useState(null);
+
+  useEffect(() => {
+    setCrewmates(data);
+  }, [data]);
+
+  return (
+    <>
+      <h1>Your Crewmates gallery</h1>
+      {crewmates &&
+        crewmates.map((crewmate) => {
+          return (
+            <div className="crewmate">
+              <div>Name: {crewmate.name}</div>
+              <div>Speed: {crewmate.speed} mph</div>
+              <div>Color: {crewmate.color}</div>
+            </div>
+          );
+        })}
+    </>
+  );
+};
 
 export default Gallery;
