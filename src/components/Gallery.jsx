@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Card from "./Card";
 
 const Gallery = ({ data }) => {
   const [crewmates, setCrewmates] = useState(null);
@@ -13,11 +14,7 @@ const Gallery = ({ data }) => {
       {crewmates &&
         crewmates.map((crewmate) => {
           return (
-            <div className="crewmate">
-              <div>Name: {crewmate.name}</div>
-              <div>Speed: {crewmate.speed} mph</div>
-              <div>Color: {crewmate.color}</div>
-            </div>
+            <Card crewmate={crewmate} />
           );
         })}
     </>
