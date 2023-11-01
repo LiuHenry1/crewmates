@@ -10,7 +10,6 @@ const Form = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name in colors) name = "color";
     const updatedCrewmate = {
       ...crewmate,
       [name]: value,
@@ -24,7 +23,7 @@ const Form = () => {
     console.log(crewmate);
 
     await supabase
-      .from("crewmates")
+      .from("Crewmates")
       .insert({
         name: crewmate.name,
         speed: crewmate.speed,
