@@ -3,8 +3,24 @@ import "./App.css";
 import Home from "./components/Home";
 import Form from "./components/Form";
 import Gallery from "./components/Gallery";
+import { useEffect, useState } from "react";
+import { supabase } from "./client";
 
 function App() {
+  const [crewmates, setCrewmates] = useState(null);
+
+  useEffect(() => {
+    const fetchCrew = async () => {
+      const {data} = await supabase 
+        .from("Crewmates")
+        .select();
+
+      setCrewmates(data);
+    }
+
+    fetchCrew();
+  }, [])
+
   let main = useRoutes([
     { 
       path: "/", 
@@ -15,7 +31,7 @@ function App() {
     },
     {
       path: "/gallery",
-      element: <Gallery />,
+      element: <Gallery data={crewmates}/>,
     },
   ]);
 
