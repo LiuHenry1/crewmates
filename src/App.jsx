@@ -35,7 +35,7 @@ function App() {
     },
     {
       path: "/edit/:id", 
-      element: <
+      element: <Edit />
     }
   ]);
 
