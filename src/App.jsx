@@ -6,39 +6,45 @@ import Gallery from "./components/Gallery";
 import Edit from "./components/Edit";
 import { useEffect, useState } from "react";
 import { supabase } from "./client";
+import DetailedView from "./components/DetailedView";
 
 function App() {
   const [crewmates, setCrewmates] = useState(null);
 
   useEffect(() => {
     const fetchCrew = async () => {
-      const {data} = await supabase 
+      const { data } = await supabase
         .from("Crewmates")
         .select()
-        .order('created_at', {ascending: true});
+        .order("created_at", { ascending: true });
 
       setCrewmates(data);
-    }
+    };
 
     fetchCrew();
-  }, [])
+  }, []);
 
   let main = useRoutes([
-    { 
-      path: "/", 
-      element: <Home /> },
+    {
+      path: "/",
+      element: <Home />,
+    },
     {
       path: "/new",
       element: <Form />,
     },
     {
       path: "/gallery",
-      element: <Gallery data={crewmates}/>,
+      element: <Gallery data={crewmates} />,
     },
     {
-      path: "/edit/:id", 
-      element: <Edit data={crewmates}/>
-    }
+      path: "/detail/:id",
+      element: <DetailedView data={crewmates} />,
+    },
+    {
+      path: "/edit/:id",
+      element: <Edit data={crewmates} />,
+    },
   ]);
 
   return (
@@ -48,10 +54,7 @@ function App() {
         <Link to="/new">Create a new Crewmate!</Link>
         <Link to="/gallery">Crewmate Gallery</Link>
       </nav>
-      <div className="main">
-        {main}
-      </div>
-
+      <div className="main">{main}</div>
     </div>
   );
 }
