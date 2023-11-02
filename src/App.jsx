@@ -33,6 +33,10 @@ function App() {
       path: "/gallery",
       element: <Gallery data={crewmates}/>,
     },
+    {
+      path: "/edit/:id", 
+      element: <
+    }
   ]);
 
   return (
