@@ -20,7 +20,6 @@ const Form = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(crewmate);
 
     await supabase
       .from("Crewmates")
@@ -31,7 +30,7 @@ const Form = () => {
       })
       .select();
 
-    console.log(error);
+    window.location = "/new";
   };
 
   const colors = [
