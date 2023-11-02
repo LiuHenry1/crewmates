@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Form from "./components/Form";
 import Gallery from "./components/Gallery";
+import Edit from "./components/Edit";
 import { useEffect, useState } from "react";
 import { supabase } from "./client";
 
@@ -13,7 +14,8 @@ function App() {
     const fetchCrew = async () => {
       const {data} = await supabase 
         .from("Crewmates")
-        .select();
+        .select()
+        .order('created_at', {ascending: true});
 
       setCrewmates(data);
     }
@@ -35,7 +37,7 @@ function App() {
     },
     {
       path: "/edit/:id", 
-      element: <Edit />
+      element: <Edit data={crewmates}/>
     }
   ]);
 
