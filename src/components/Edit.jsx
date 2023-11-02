@@ -36,7 +36,7 @@ const Edit = ({ data }) => {
     setCrewmate(updatedCrewmate);
   };
 
-  const handleClick = async (e) => {
+  const handleUpdateClick = async (e) => {
     e.preventDefault();
 
     await supabase
@@ -50,6 +50,17 @@ const Edit = ({ data }) => {
 
     window.location = `/edit/${id}`;
   };
+
+  const handleDeleteClick = async (e) => {
+    e.preventDefault();
+
+    await supabase
+      .from("Crewmates")
+      .delete()
+      .eq("id", id);
+
+    window.location = "/gallery";
+  }
 
   const colorInputs = colors.map((color) => (
     <>
@@ -85,11 +96,8 @@ const Edit = ({ data }) => {
             value={crewmate.speed}
           />
           <div>{colorInputs}</div>
-          <input
-            onClick={handleClick}
-            type="submit"
-            value="Submit"
-          />
+          <input onClick={handleUpdateClick} type="submit" value="Update" />
+          <input onClick={handleDeleteClick} type="submit" value="Delete" />
         </form>
       )}
     </>
