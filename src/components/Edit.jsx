@@ -46,7 +46,7 @@ const Edit = ({ data }) => {
         color: crewmate.color,
       })
       .eq("id", id);
-
+    alert("Updated!");
     window.location = `/edit/${id}`;
 
   };
