@@ -41,7 +41,6 @@ const Form = () => {
     "Yellow",
     "Orange",
     "Pink",
-    "Rainbow",
   ];
   const colorInputs = colors.map((color) => (
     <>
@@ -50,16 +49,20 @@ const Form = () => {
     </>
   ));
   return (
-    <>
+    <div className="form-container">
+      <h1>Create a new Crewmate!</h1>
       <form>
         <label for="name">Name</label>
         <input onChange={handleChange} type="text" name="name" />
         <label for="speed">Speed (mph)</label>
         <input onChange={handleChange} type="text" name="speed" />
-        <div>{colorInputs}</div>
-        <input onClick={handleClick} type="submit" value="Submit" />
+        <div>
+          <label>Color:</label>
+          {colorInputs}
+        </div>
+        <input className="button-84" onClick={handleClick} type="submit" value="Submit" />
       </form>
-    </>
+    </div>
   );
 };
 
