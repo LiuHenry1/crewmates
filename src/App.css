@@ -60,6 +60,14 @@ form {
   background-color: rgba(255, 255, 255, 0.533);
 }
 
+.detailed-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
 .red {
   box-shadow: 0px 9px 30px 25px rgb(226, 68, 68);
 }
