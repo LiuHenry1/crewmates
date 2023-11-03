@@ -11,12 +11,12 @@ const Gallery = ({ data }) => {
   return (
     <>
       <h1>Your Crewmates gallery</h1>
-      {crewmates &&
-        crewmates.map((crewmate) => {
-          return (
-            <Card crewmate={crewmate} />
-          );
-        })}
+      <div className="gallery">
+        {crewmates &&
+          crewmates.map((crewmate) => {
+            return <Card crewmate={crewmate} />;
+          })}
+      </div>
     </>
   );
 };
