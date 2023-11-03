@@ -23,7 +23,6 @@ const Edit = ({ data }) => {
     "Yellow",
     "Orange",
     "Pink",
-    "Rainbow",
   ];
 
   const handleChange = (e) => {
@@ -49,18 +48,16 @@ const Edit = ({ data }) => {
       .eq("id", id);
 
     window.location = `/edit/${id}`;
+
   };
 
   const handleDeleteClick = async (e) => {
     e.preventDefault();
 
-    await supabase
-      .from("Crewmates")
-      .delete()
-      .eq("id", id);
+    await supabase.from("Crewmates").delete().eq("id", id);
 
     window.location = "/gallery";
-  }
+  };
 
   const colorInputs = colors.map((color) => (
     <>
@@ -75,10 +72,9 @@ const Edit = ({ data }) => {
     </>
   ));
 
-  console.log(crewmate);
-
   return (
-    <>
+    <div className="form-container">
+      <h1>Create a new Crewmate!</h1>
       {crewmate && (
         <form>
           <label for="name">Name</label>
@@ -96,11 +92,23 @@ const Edit = ({ data }) => {
             value={crewmate.speed}
           />
           <div>{colorInputs}</div>
-          <input onClick={handleUpdateClick} type="submit" value="Update" />
-          <input onClick={handleDeleteClick} type="submit" value="Delete" />
+          <div className="submit-buttons">
+            <input
+              className="button-84"
+              onClick={handleUpdateClick}
+              type="submit"
+              value="Update"
+            />
+            <input
+              className="button-84"
+              onClick={handleDeleteClick}
+              type="submit"
+              value="Delete"
+            />
+          </div>
         </form>
       )}
-    </>
+    </div>
   );
 };
 
