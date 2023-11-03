@@ -32,7 +32,7 @@ const DetailedView = ({ data }) => {
   return (
     <>
       {crewmate && (
-        <div className="detailedView">
+        <div className="detailed-view">
           <h1>Crewmate: {crewmate.name}</h1>
           <h2>Stats:</h2>
           <h4>Speed: {crewmate.speed} mph</h4>
